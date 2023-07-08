@@ -1,0 +1,5 @@
+[vagrant@localhost ~]$ sudo vi /etc/motd
+[vagrant@localhost ~]$ sudo cat /etc/motd
+======================================
+       DevOps_Curs_HW01_Centos7
+======================================
