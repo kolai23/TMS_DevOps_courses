@@ -1,0 +1,7 @@
+vagrant@ubuntu-xenial:~$ sudo vi /etc/motd
+
+[1]+  Stopped                 sudo vi /etc/motd
+vagrant@ubuntu-xenial:~$ cat /etc/motd
+======================================
+       DevOps_Curs_HW01_Ubuntu
+======================================
