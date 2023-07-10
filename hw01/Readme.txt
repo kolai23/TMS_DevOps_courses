@@ -30,6 +30,7 @@
   5.15.0-75-generic #82-Ubuntu SMP Tue Jun 6 23:10:23 UTC 2023
    
 4. Вывести список модулей ядра и записать в файл
+ find /lib/modules/5.15.0-75-generic/kernel -name *.ko > kernel_module
   
 5. Просмотреть информацию о процессоре и модулях оперативной памяти
 [vagrant@localhost ~]$ cat /proc/cpuinfo
