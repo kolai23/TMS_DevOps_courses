@@ -325,7 +325,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
   	apt-get update
   	useradd -s /bin/bash -d /home/default_admin_user/ -m -G sudo default_admin_user
-    cp -pr /home/vagrant/.ssh /home/default_admin_user/
+        cp -pr /home/vagrant/.ssh /home/default_admin_user/
    
   SHELL
 end
