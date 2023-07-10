@@ -25,14 +25,14 @@
     LC_IDENTIFICATION="en_US.UTF-8"
     LC_ALL=
 
-3. Определить точную версию ядра.
+2. Определить точную версию ядра.
   [vagrant@localhost ~]$ uname -rv
   5.15.0-75-generic #82-Ubuntu SMP Tue Jun 6 23:10:23 UTC 2023
    
-4. Вывести список модулей ядра и записать в файл
- find /lib/modules/5.15.0-75-generic/kernel -name *.ko > kernel_module
+3. Вывести список модулей ядра и записать в файл
+   [vagrant@localhost ~]$ find /lib/modules/5.15.0-75-generic/kernel -name *.ko > kernel_module
   
-5. Просмотреть информацию о процессоре и модулях оперативной памяти
+4. Просмотреть информацию о процессоре и модулях оперативной памяти
 [vagrant@localhost ~]$ cat /proc/cpuinfo
 processor	: 0
 vendor_id	: GenuineIntel
@@ -195,7 +195,7 @@ DirectMap4k:      313280 kB
 DirectMap2M:     1783808 kB
 DirectMap1G:           0 kB
 
-6. Получить информацию о жестком диске
+5. Получить информацию о жестком диске
 [vagrant@localhost ~]$ sudo fdisk -l
     Disk /dev/loop0: 63.28 MiB, 66355200 bytes, 129600 sectors
     Units: sectors of 1 * 512 = 512 bytes
@@ -246,13 +246,14 @@ DirectMap1G:           0 kB
     Sector size (logical/physical): 512 bytes / 4096 bytes
     I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 
-8. Добавить в виртуальную машину второй сетевой интерфейс (вывести информацию о нем в виртуалках)
+6. Добавить в виртуальную машину второй сетевой интерфейс (вывести информацию о нем в виртуалках)
 
-9. Узнать полную информацию об использованной и неиспользованной памяти
+7. Узнать полную информацию об использованной и неиспользованной памяти
 
-10. Создать пользователя new_admin_user, Настроить ssh доступ пользователю по ключу на VM, запретить ему авторизацию по паролю
+8. Создать пользователя new_admin_user, Настроить ssh доступ пользователю по ключу на VM, запретить ему авторизацию по паролю
+[vagrant@localhost ~]$
 
-11. Вывести список файловых систем, которые поддерживаются ядром
+9. Вывести список файловых систем, которые поддерживаются ядром
 [vagrant@localhost ~]$ сat /proc/filesystems
 nodev	sysfs
 nodev	tmpfs
