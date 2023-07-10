@@ -1,14 +1,14 @@
 1. Произвести минимальную настройку (время, локаль, custom motd)
-   [vagrant@localhost ~]$ timedatectl set-time '2023-06-27 21:55:00'
-   [vagrant@localhost ~]$ sudo timedatectl set-timezone Europe/Minsk
+   vagrant@ubuntu-xenial: timedatectl set-time '2023-06-27 21:55:00'
+   vagrant@ubuntu-xenial: sudo timedatectl set-timezone Europe/Minsk
    Вт 27 июн 2023 22:29:27 +03            
    lrwxrwxrwx 1 root root 32 июн 26 23:40 /etc/localtime -> /usr/share/zoneinfo/Europe/Minsk
-   [vagrant@localhost ~]$ sudo vi /etc/motd
-   [vagrant@localhost ~]$ sudo cat /etc/motd
+   vagrant@ubuntu-xenial: sudo vi /etc/motd
+   vagrant@ubuntu-xenial: sudo cat /etc/motd
    ======================================
            DevOps_Curs_HW01_Centos7
    ======================================
-   [vagrant@localhost ~]$ sudo update-locale LANG=en_US.UTF-8 LC_TIME=ru_RU.UTF-8
+   vagrant@ubuntu-xenial: sudo update-locale LANG=en_US.UTF-8 LC_TIME=ru_RU.UTF-8
     LANG=en_US.UTF-8
     LANGUAGE=
     LC_CTYPE="en_US.UTF-8"
@@ -26,14 +26,14 @@
     LC_ALL=
 
 2. Определить точную версию ядра.
-  [vagrant@localhost ~]$ uname -rv
+  vagrant@ubuntu-xenial: uname -rv
   5.15.0-75-generic #82-Ubuntu SMP Tue Jun 6 23:10:23 UTC 2023
    
 3. Вывести список модулей ядра и записать в файл
-   [vagrant@localhost ~]$ find /lib/modules/5.15.0-75-generic/kernel -name *.ko > kernel_module
+   vagrant@ubuntu-xenial: find /lib/modules/5.15.0-75-generic/kernel -name *.ko > kernel_module
   
 4. Просмотреть информацию о процессоре и модулях оперативной памяти
-[vagrant@localhost ~]$ cat /proc/cpuinfo
+vagrant@ubuntu-xenial: cat /proc/cpuinfo
 processor	: 0
 vendor_id	: GenuineIntel
 cpu family	: 6
@@ -142,7 +142,7 @@ cache_alignment	: 64
 address sizes	: 39 bits physical, 48 bits virtual
 power management:
 
-[vagrant@localhost ~]$ cat /proc/meminfo
+vagrant@ubuntu-xenial: cat /proc/meminfo
 MemTotal:         819776 kB
 MemFree:          111868 kB
 MemAvailable:     422356 kB
@@ -196,7 +196,7 @@ DirectMap2M:     1783808 kB
 DirectMap1G:           0 kB
 
 5. Получить информацию о жестком диске
-[vagrant@localhost ~]$ sudo fdisk -l
+vagrant@ubuntu-xenial: sudo fdisk -l
     Disk /dev/loop0: 63.28 MiB, 66355200 bytes, 129600 sectors
     Units: sectors of 1 * 512 = 512 bytes
     Sector size (logical/physical): 512 bytes / 512 bytes
@@ -270,14 +270,14 @@ vagrant@ubuntu-xenial:~$ ip add
 7. Узнать полную информацию об использованной и неиспользованной памяти
 
 8. Создать пользователя new_admin_user, Настроить ssh доступ пользователю по ключу на VM, запретить ему авторизацию по паролю
-[vagrant@localhost ~]$ sudo useradd -s /bin/bash -d /home/new_admin_user/ -m -G sudo new_admin_user
-[vagrant@localhost ~]$ sudo cp -pr /home/vagrant/.ssh /home/new_admin_user/
-[vagrant@localhost ~]$ sudo cp -pr /home/vagrant/.ssh /home/new_admin_user/
+vagrant@ubuntu-xenial: sudo useradd -s /bin/bash -d /home/new_admin_user/ -m -G sudo new_admin_user
+vagrant@ubuntu-xenial: sudo cp -pr /home/vagrant/.ssh /home/new_admin_user/
+vagrant@ubuntu-xenial: sudo cp -pr /home/vagrant/.ssh /home/new_admin_user/
 PasswordAuthentication no
-[vagrant@localhost ~]$ sudo vi /etc/ssh/ssh_config
+vagrant@ubuntu-xenial: sudo vi /etc/ssh/ssh_config
 
 9. Вывести список файловых систем, которые поддерживаются ядром
-[vagrant@localhost ~]$ сat /proc/filesystems
+vagrant@ubuntu-xenial: сat /proc/filesystems
 nodev	sysfs
 nodev	tmpfs
 nodev	bdev
