@@ -310,7 +310,7 @@ nodev	pstore
 	btrfs
 nodev	autofs
 nodev	binfmt_misc
-10.
+10. Настроить образ так чтобы при разворачивании системы автоматически создавался пользователем default_admin_user с ssh доступом 
 Создаем vagrant файл командой vagrant init и его корректируем
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
