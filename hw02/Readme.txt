@@ -1,4 +1,4 @@
-1. Смонтировать /home на отдельный раздел
+xt1. Смонтировать /home на отдельный раздел
 Добавил диск на 2 гб 
 vagrant@ubuntu-xenial:~$ sudo fdisk -l
 Disk /dev/sda: 40 GiB, 42949672960 bytes, 83886080 sectors
