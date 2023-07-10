@@ -1,14 +1,14 @@
 1. Произвести минимальную настройку (время, локаль, custom motd)
-   timedatectl set-time '2023-06-27 21:55:00'
-   sudo timedatectl set-timezone Europe/Minsk
-   Вт 27 июн 2023 22:29:27 +03
+   [vagrant@localhost ~]$ timedatectl set-time '2023-06-27 21:55:00'
+   [vagrant@localhost ~]$ sudo timedatectl set-timezone Europe/Minsk
+   Вт 27 июн 2023 22:29:27 +03            
    lrwxrwxrwx 1 root root 32 июн 26 23:40 /etc/localtime -> /usr/share/zoneinfo/Europe/Minsk
    [vagrant@localhost ~]$ sudo vi /etc/motd
    [vagrant@localhost ~]$ sudo cat /etc/motd
    ======================================
            DevOps_Curs_HW01_Centos7
    ======================================
-   sudo update-locale LANG=en_US.UTF-8 LC_TIME=ru_RU.UTF-8
+   [vagrant@localhost ~]$ sudo update-locale LANG=en_US.UTF-8 LC_TIME=ru_RU.UTF-8
     LANG=en_US.UTF-8
     LANGUAGE=
     LC_CTYPE="en_US.UTF-8"
@@ -24,15 +24,15 @@
     LC_MEASUREMENT="en_US.UTF-8"
     LC_IDENTIFICATION="en_US.UTF-8"
     LC_ALL=
-   
+
 3. Определить точную версию ядра.
-  uname -rv
+  [vagrant@localhost ~]$ uname -rv
   5.15.0-75-generic #82-Ubuntu SMP Tue Jun 6 23:10:23 UTC 2023
    
 4. Вывести список модулей ядра и записать в файл
   
 5. Просмотреть информацию о процессоре и модулях оперативной памяти
-cat /proc/cpuinfo
+[vagrant@localhost ~]$ cat /proc/cpuinfo
 processor	: 0
 vendor_id	: GenuineIntel
 cpu family	: 6
@@ -141,7 +141,7 @@ cache_alignment	: 64
 address sizes	: 39 bits physical, 48 bits virtual
 power management:
 
-cat /proc/meminfo
+[vagrant@localhost ~]$ cat /proc/meminfo
 MemTotal:         819776 kB
 MemFree:          111868 kB
 MemAvailable:     422356 kB
@@ -195,7 +195,7 @@ DirectMap2M:     1783808 kB
 DirectMap1G:           0 kB
 
 6. Получить информацию о жестком диске
-    sudo fdisk -l
+[vagrant@localhost ~]$ sudo fdisk -l
     Disk /dev/loop0: 63.28 MiB, 66355200 bytes, 129600 sectors
     Units: sectors of 1 * 512 = 512 bytes
     Sector size (logical/physical): 512 bytes / 512 bytes
@@ -252,7 +252,7 @@ DirectMap1G:           0 kB
 10. Создать пользователя new_admin_user, Настроить ssh доступ пользователю по ключу на VM, запретить ему авторизацию по паролю
 
 11. Вывести список файловых систем, которые поддерживаются ядром
-сat /proc/filesystems
+[vagrant@localhost ~]$ сat /proc/filesystems
 nodev	sysfs
 nodev	tmpfs
 nodev	bdev
