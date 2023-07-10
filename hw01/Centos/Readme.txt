@@ -98,6 +98,56 @@ clflush size    : 64
 cache_alignment : 64
 address sizes   : 39 bits physical, 48 bits virtual
 power management:
+
+
+[vagrant@localhost ~]$ sudo cat /proc/meminfo
+MemTotal:         498684 kB
+MemFree:          309368 kB
+MemAvailable:     391528 kB
+Buffers:            2068 kB
+Cached:            76372 kB
+SwapCached:            0 kB
+Active:            59004 kB
+Inactive:          58504 kB
+Active(anon):      39276 kB
+Inactive(anon):     4360 kB
+Active(file):      19728 kB
+Inactive(file):    54144 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:       2097148 kB
+SwapFree:        2097148 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:         39088 kB
+Mapped:            23300 kB
+Shmem:              4568 kB
+Slab:              44020 kB
+SReclaimable:      21400 kB
+SUnreclaim:        22620 kB
+KernelStack:        1632 kB
+PageTables:         5032 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     2346488 kB
+Committed_AS:     298392 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:        5028 kB
+VmallocChunk:   34359730176 kB
+Percpu:              164 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+DirectMap4k:       38848 kB
+DirectMap2M:      485376 kB
+
 5. Получить информацию о жестком диске
 [vagrant@localhost ~]$ sudo fdisk -l
 
