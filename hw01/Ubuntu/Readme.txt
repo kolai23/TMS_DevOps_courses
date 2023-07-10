@@ -247,11 +247,34 @@ DirectMap1G:           0 kB
     I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 
 6. Добавить в виртуальную машину второй сетевой интерфейс (вывести информацию о нем в виртуалках)
+vagrant@ubuntu-xenial:~$ ip add
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 02:be:82:6b:cc:1d brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global enp0s3
+       valid_lft forever preferred_lft forever
+    inet6 fe80::be:82ff:fe6b:cc1d/64 scope link
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:b2:70:70 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.33.2/24 brd 192.168.33.255 scope global enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:feb2:7070/64 scope link
+       valid_lft forever preferred_lft forever
 
 7. Узнать полную информацию об использованной и неиспользованной памяти
 
 8. Создать пользователя new_admin_user, Настроить ssh доступ пользователю по ключу на VM, запретить ему авторизацию по паролю
-[vagrant@localhost ~]$
+[vagrant@localhost ~]$ sudo useradd -s /bin/bash -d /home/new_admin_user/ -m -G sudo new_admin_user
+[vagrant@localhost ~]$ sudo cp -pr /home/vagrant/.ssh /home/new_admin_user/
+[vagrant@localhost ~]$ sudo cp -pr /home/vagrant/.ssh /home/new_admin_user/
+PasswordAuthentication no
+[vagrant@localhost ~]$ sudo vi /etc/ssh/ssh_config
 
 9. Вывести список файловых систем, которые поддерживаются ядром
 [vagrant@localhost ~]$ сat /proc/filesystems
@@ -287,3 +310,22 @@ nodev	pstore
 	btrfs
 nodev	autofs
 nodev	binfmt_misc
+10.
+Создаем vagrant файл командой vagrant init и его корректируем
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/xenial64"
+  
+  config.vm.network "private_network", ip: "192.168.33.2"
+
+  config.vm.provider "virtualbox" do |vb|
+  vb.name = "server01"
+  vb.memory = "1024"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+  	apt-get update
+  	useradd -s /bin/bash -d /home/default_admin_user/ -m -G sudo default_admin_user
+    cp -pr /home/vagrant/.ssh /home/default_admin_user/
+   
+  SHELL
+end
