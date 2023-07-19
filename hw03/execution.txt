@@ -1,0 +1,50 @@
+1. Создать bash-скрипт собирающий данные о количестве свободной памяти, текущей загрузке процессора, ip-адрес, вывести в формате «Ключ: значение»,
+причем все ключи заменить на русские названия, например чтобы вместо «Mem: 1024Mb» получалось «Память: 1024Мб», для приведения к нужному формату использовать grep, sed и awk.
+
+vagrant@ubuntu-xenial:~$ ./script02.sh
+ИП 127.0.0.1
+ИП 10.0.2.15
+ИП 192.168.33.2
+Файловая_система  Доступно
+udev 488M
+tmpfs 97M
+/dev/sda1 38G
+tmpfs 497M
+tmpfs 5.0M
+tmpfs 497M
+/dev/sdc 1.8G
+tmpfs 100M
+Процесор: 0.0%
+Оперативная память: 48 MB
+
+2. Написать bash-скрипт который создает пользователя (принимает имя в качестве первого аргумента) и создает в его домашней директории
+файл с информацией о системе: Ядро, CPU, RAM, Дисковая подсистема (lscpu, lsblk, uname, etc). Вывод каждой команды должен быть отделен сепаратором (например ====)
+
+vagrant@ubuntu-xenial:~$ sudo ./script03.sh test02
+useradd: user 'test02' already exists
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+vagrant@ubuntu-xenial:~$ su - test02
+Password:
+test02@ubuntu-xenial:~$ pwd
+/home/test02
+test02@ubuntu-xenial:~$ cat sysinfo
+4.4.0-210-generic #242-Ubuntu SMP Fri Apr 16 09:57:56 UTC 2021
+================
+CPU(s):                2
+Model name:            Intel(R) Core(TM) i5-9300H CPU @ 2.40GHz
+CPU MHz:               2400.006
+================
+              total        used        free      shared  buff/cache   available
+Mem:           992M         51M        550M        3.1M        390M        788M
+Swap:            0B          0B          0B
+================
+NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  40G  0 disk
+└─sda1   8:1    0  40G  0 part /
+sdb      8:16   0  10M  0 disk
+sdc      8:32   0   2G  0 disk /home
+test02@ubuntu-xenial:~$
+
+

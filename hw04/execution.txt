@@ -1,0 +1,166 @@
+1. Отобразить все процессы в системе
+
+vagrant@ubuntu-xenial:~$ ps -eF
+UID        PID  PPID  C    SZ   RSS PSR STIME TTY          TIME CMD
+root         1     0  0  9337  5344   0 15:08 ?        00:00:02 /sbin/init
+root         2     0  0     0     0   1 15:08 ?        00:00:00 [kthreadd]
+root         3     2  0     0     0   0 15:08 ?        00:00:00 [ksoftirqd/0]
+root         5     2  0     0     0   0 15:08 ?        00:00:00 [kworker/0:0H]
+root         7     2  0     0     0   1 15:08 ?        00:00:00 [rcu_sched]
+root         8     2  0     0     0   0 15:08 ?        00:00:00 [rcu_bh]
+root         9     2  0     0     0   0 15:08 ?        00:00:00 [migration/0]
+root        10     2  0     0     0   0 15:08 ?        00:00:00 [watchdog/0]
+root        11     2  0     0     0   1 15:08 ?        00:00:00 [watchdog/1]
+root        12     2  0     0     0   1 15:08 ?        00:00:00 [migration/1]
+root        13     2  0     0     0   1 15:08 ?        00:00:00 [ksoftirqd/1]
+root        15     2  0     0     0   1 15:08 ?        00:00:00 [kworker/1:0H]
+root        17     2  0     0     0   1 15:08 ?        00:00:00 [kdevtmpfs]
+root        18     2  0     0     0   1 15:08 ?        00:00:00 [netns]
+root        19     2  0     0     0   1 15:08 ?        00:00:00 [perf]
+root        20     2  0     0     0   0 15:08 ?        00:00:00 [khungtaskd]
+root        21     2  0     0     0   1 15:08 ?        00:00:00 [writeback]
+root        22     2  0     0     0   1 15:08 ?        00:00:00 [ksmd]
+root        23     2  0     0     0   1 15:08 ?        00:00:00 [khugepaged]
+root        24     2  0     0     0   1 15:08 ?        00:00:00 [crypto]
+root        25     2  0     0     0   1 15:08 ?        00:00:00 [kintegrityd]
+root        26     2  0     0     0   1 15:08 ?        00:00:00 [bioset]
+root        27     2  0     0     0   1 15:08 ?        00:00:00 [kblockd]
+root        28     2  0     0     0   1 15:08 ?        00:00:00 [ata_sff]
+root        29     2  0     0     0   1 15:08 ?        00:00:00 [md]
+root        30     2  0     0     0   1 15:08 ?        00:00:00 [devfreq_wq]
+root        33     2  0     0     0   1 15:08 ?        00:00:00 [kswapd0]
+root        34     2  0     0     0   1 15:08 ?        00:00:00 [vmstat]
+root        35     2  0     0     0   0 15:08 ?        00:00:00 [fsnotify_mark]
+root        36     2  0     0     0   1 15:08 ?        00:00:00 [ecryptfs-kthrea]
+root        52     2  0     0     0   1 15:08 ?        00:00:00 [kthrotld]
+root        54     2  0     0     0   0 15:08 ?        00:00:00 [acpi_thermal_pm]
+root        55     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        56     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        57     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        58     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        59     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        60     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        61     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        62     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root        66     2  0     0     0   0 15:08 ?        00:00:00 [ipv6_addrconf]
+root        79     2  0     0     0   1 15:08 ?        00:00:00 [deferwq]
+root        80     2  0     0     0   1 15:08 ?        00:00:00 [charger_manager]
+root       120     2  0     0     0   1 15:08 ?        00:00:00 [kpsmoused]
+root       146     2  0     0     0   0 15:08 ?        00:00:00 [mpt_poll_0]
+root       147     2  0     0     0   1 15:08 ?        00:00:00 [mpt/0]
+root       148     2  0     0     0   0 15:08 ?        00:00:00 [scsi_eh_0]
+root       149     2  0     0     0   0 15:08 ?        00:00:00 [scsi_tmf_0]
+root       151     2  0     0     0   0 15:08 ?        00:00:00 [bioset]
+root       152     2  0     0     0   1 15:08 ?        00:00:00 [bioset]
+root       153     2  0     0     0   1 15:08 ?        00:00:00 [bioset]
+root       250     2  0     0     0   1 15:57 ?        00:00:00 [kworker/1:1H]
+root       258     2  0     0     0   1 15:57 ?        00:00:00 [raid5wq]
+root       288     2  0     0     0   0 15:57 ?        00:00:00 [bioset]
+root       309     2  0     0     0   0 15:57 ?        00:00:00 [jbd2/sda1-8]
+root       310     2  0     0     0   0 15:57 ?        00:00:00 [ext4-rsv-conver]
+root       376     2  0     0     0   0 15:57 ?        00:00:00 [kworker/0:1H]
+root       388     2  0     0     0   0 15:57 ?        00:00:00 [iscsi_eh]
+root       395     2  0     0     0   1 15:57 ?        00:00:00 [ib_addr]
+root       399     1  0  7087  3020   1 15:57 ?        00:00:00 /lib/systemd/systemd-j
+root       400     2  0     0     0   1 15:57 ?        00:00:00 [ib_mcast]
+root       401     2  0     0     0   0 15:57 ?        00:00:00 [ib_nl_sa_wq]
+root       403     2  0     0     0   0 15:57 ?        00:00:00 [ib_cm]
+root       408     2  0     0     0   0 15:57 ?        00:00:00 [iw_cm_wq]
+root       411     2  0     0     0   0 15:57 ?        00:00:00 [rdma_cm]
+root       412     2  0     0     0   1 15:57 ?        00:00:00 [kauditd]
+root       427     1  0 23692  1756   0 15:57 ?        00:00:00 /sbin/lvmetad -f
+root       465     1  0 10689  4120   0 15:57 ?        00:00:00 /lib/systemd/systemd-u
+root       492     2  0     0     0   0 15:57 ?        00:00:00 [iprt-VBoxWQueue]
+root       648     2  0     0     0   0 15:57 ?        00:00:00 [jbd2/sdc-8]
+root       649     2  0     0     0   0 15:57 ?        00:00:00 [ext4-rsv-conver]
+root      1014     1  0  4031   868   1 15:57 ?        00:00:00 /sbin/dhclient -1 -v -
+root      1141     1  0 40225  1516   0 15:57 ?        00:00:00 /usr/bin/lxcfs /var/li
+root      1142     1  0  7154  3160   1 15:57 ?        00:00:00 /lib/systemd/systemd-l
+message+  1145     1  0 10724  3844   1 15:57 ?        00:00:00 /usr/bin/dbus-daemon -
+root      1161     1  0  1098  1248   1 15:57 ?        00:00:00 /usr/sbin/acpid
+root      1183     1  0 68646  6152   0 15:57 ?        00:00:00 /usr/lib/accountsservi
+root      1189     1  0  6931  3028   1 15:57 ?        00:00:00 /usr/sbin/cron -f
+syslog    1193     1  0 64097  3508   0 15:57 ?        00:00:00 /usr/sbin/rsyslogd -n
+daemon    1195     1  0  6510  2124   1 15:57 ?        00:00:00 /usr/sbin/atd -f
+root      1208     1  0 43940 19748   1 15:57 ?        00:00:00 /usr/bin/python3 /usr/
+root      1214     1  0  1304   148   0 15:57 ?        00:00:01 /sbin/iscsid
+root      1215     1  0  1429  3520   1 15:57 ?        00:00:07 /sbin/iscsid
+root      1251     1  0 16377  6148   0 15:57 ?        00:00:00 /usr/sbin/sshd -D
+root      1256     1  0  3342   164   0 15:57 ?        00:00:00 /sbin/mdadm --monitor
+root      1282     1  0 69294  6184   0 15:57 ?        00:00:00 /usr/lib/policykit-1/p
+root      1313     1  0  3663  1808   0 15:58 tty1     00:00:00 /sbin/agetty --noclear
+root      1319     1  0 78148  2520   1 15:58 ?        00:00:06 /usr/sbin/VBoxService
+root      1328     1  0  3617  2308   1 15:58 ttyS0    00:00:00 /sbin/agetty --keep-ba
+root      1340     1  0  4867   224   0 15:58 ?        00:00:00 /usr/sbin/irqbalance -
+ntp       1347     1  0 27508  5184   1 15:58 ?        00:00:02 /usr/sbin/ntpd -p /var
+root      2669     2  0     0     0   1 16:17 ?        00:00:08 [kworker/1:2]
+root      4369     2  0     0     0   1 19:35 ?        00:00:00 [kworker/u4:0]
+root      4381     2  0     0     0   0 19:39 ?        00:00:00 [kworker/0:2]
+root      4387     2  0     0     0   1 19:39 ?        00:00:03 [kworker/1:0]
+root      4798  1251  0 23199  6664   0 19:39 ?        00:00:00 sshd: vagrant [priv]
+vagrant   4802     1  0 11285  4460   1 19:39 ?        00:00:00 /lib/systemd/systemd -
+vagrant   4803  4802  0 15200  1564   0 19:39 ?        00:00:00 (sd-pam)
+vagrant   4885  4798  0 23268  5092   0 19:39 ?        00:00:03 sshd: vagrant@pts/0
+vagrant   4886  4885  0  5349  5440   0 19:39 pts/0    00:00:00 -bash
+root      5081     2  0     0     0   0 19:41 ?        00:00:00 [kworker/0:3]
+vagrant   5266  4886  0 13154  8528   0 19:49 pts/0    00:00:00 vi ./script01
+vagrant   5275  4886  0 13207  8760   0 19:49 pts/0    00:00:00 vi ./script01.sh
+vagrant   5316  4886  0  2810  3080   0 19:56 pts/0    00:00:00 /bin/bash ./script03.s
+root      5320  5316  0 12855  3956   0 19:56 pts/0    00:00:00 sudo passwd
+root      5321  5320  0 10679  3184   0 19:56 pts/0    00:00:00 passwd
+root      5345     2  0     0     0   1 20:00 ?        00:00:00 [kworker/u4:2]
+vagrant   5347  4886  0  2810  2964   1 20:02 pts/0    00:00:00 /bin/bash ./script03.s
+root      5351  5347  0 12855  3892   0 20:02 pts/0    00:00:00 sudo passwd
+root      5352  5351  0 10679  3356   0 20:02 pts/0    00:00:00 passwd
+vagrant   5512  4886  0 10131  3844   1 20:31 pts/0    00:00:00 top
+vagrant   5513  4886  0 10131  3748   1 20:31 pts/0    00:00:00 top
+root      5535     2  0     0     0   0 20:33 ?        00:00:00 [kworker/u4:1]
+vagrant   5541  4886  0  9020  3312   0 20:34 pts/0    00:00:00 ps -eF
+
+
+2. Запустить бесконечный процесс в фоновом режиме
+vagrant@ubuntu-xenial:~$ vi infinity.sh
+
+[1]+  Stopped                 vi infinity.sh
+vagrant@ubuntu-xenial:~$ cat infinity.sh
+#!/bin/bash
+while true
+do
+now=$(date +"%Y.%m.%d.%S.%N")
+echo $now >> /home/vagrant/test.log
+sleep 1
+done
+vagrant@ubuntu-xenial:~$ ./infinity.sh &
+[1] 2971
+vagrant@ubuntu-xenial:~$ jobs -l
+[1]+  2971 Running                 ./infinity.sh &
+
+3. Убедиться, что процесс продолжил работу после завершения сессии
+vagrant@ubuntu-xenial:~$ ./infinity.sh
+
+^Z
+[1]+  Stopped                 ./infinity.sh
+vagrant@ubuntu-xenial:~$ bg %1
+[1]+ ./infinity.sh &
+vagrant@ubuntu-xenial:~$ jobs -l
+[1]+  1787 Running                 ./infinity.sh &
+vagrant@ubuntu-xenial:~$exit
+
+Last login: Wed Jul 19 22:24:46 2023 from 10.0.2.2
+vagrant@ubuntu-xenial:~$ ps -eF | grep 1787
+vagrant   1787     1  0  2813  2980   1 22:23 ?        00:00:00 /bin/bash ./infinity.sh
+vagrant   2924  1787  0  1501   748   1 22:30 ?        00:00:00 sleep 1
+vagrant   2926  2823  0  3235   928   1 22:30 pts/1    00:00:00 grep --color=auto 1787
+vagrant@ubuntu-xenial:~$
+
+4. Убить процесс, запущенный в фоновом режиме
+
+vagrant@ubuntu-xenial:~$ kill 1787
+vagrant@ubuntu-xenial:~$ ps -eF | grep 1787
+vagrant   3097  2823  0  3235   932   1 22:31 pts/1    00:00:00 grep --color=auto 1787
+vagrant@ubuntu-xenial:~$
+
+5. Написать свой сервис под управлением systemd, добавить его в автозагрузку (можно использовать процесс из п.2
+
+6. Посмотреть логи своего сервиса.
+
