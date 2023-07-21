@@ -136,15 +136,23 @@ vagrant@ubuntu-xenial:~$ jobs -l
 [1]+  2971 Running                 ./infinity.sh &
 
 3. Убедиться, что процесс продолжил работу после завершения сессии
-vagrant@ubuntu-xenial:~$ ./infinity.sh
+vagrant@ubuntu-xenial:~$ su - test01
+Password:
+test01@ubuntu-xenial:~$ ./infinity.sh &
+[1] 7831
+test01@ubuntu-xenial:~$ exit
+logout
+vagrant@ubuntu-xenial:~$ ps
+  PID TTY          TIME CMD
+ 6831 pts/0    00:00:00 bash
+ 8358 pts/0    00:00:00 ps
+vagrant@ubuntu-xenial:~$ ps -eF | grep 7831
+test01    7831     1  0  2811  3032   0 08:04 pts/0    00:00:00 /bin/bash ./infinity.sh
+test01    8416  7831  0  1501   640   0 08:06 pts/0    00:00:00 sleep 1
+vagrant   8420  6831  0  3235   940   0 08:06 pts/0    00:00:00 grep --color=auto 7831
+vagrant@ubuntu-xenial:~$
 
-^Z
-[1]+  Stopped                 ./infinity.sh
-vagrant@ubuntu-xenial:~$ bg %1
-[1]+ ./infinity.sh &
-vagrant@ubuntu-xenial:~$ jobs -l
-[1]+  1787 Running                 ./infinity.sh &
-vagrant@ubuntu-xenial:~$exit
+
 
 Last login: Wed Jul 19 22:24:46 2023 from 10.0.2.2
 vagrant@ubuntu-xenial:~$ ps -eF | grep 1787
@@ -155,12 +163,31 @@ vagrant@ubuntu-xenial:~$
 
 4. Убить процесс, запущенный в фоновом режиме
 
-vagrant@ubuntu-xenial:~$ kill 1787
-vagrant@ubuntu-xenial:~$ ps -eF | grep 1787
-vagrant   3097  2823  0  3235   932   1 22:31 pts/1    00:00:00 grep --color=auto 1787
+vagrant@ubuntu-xenial:~$ sudo kill -9 7831
+vagrant@ubuntu-xenial:~$ ps -eF | grep 7831
+vagrant   9091  6831  0  3235   984   1 08:09 pts/0    00:00:00 grep --color=auto 7831
+vagrant@ubuntu-xenial:~$
 vagrant@ubuntu-xenial:~$
 
 5. Написать свой сервис под управлением systemd, добавить его в автозагрузку (можно использовать процесс из п.2
+vagrant@ubuntu-xenial:~$ sudo vi /etc/systemd/system/infinity.service
+vagrant@ubuntu-xenial:~$ sudo cat /etc/systemd/system/infinity.service
+[Unit]
+Description=Start infinity proces
+After=network.target
+
+[Service]
+Type=notify
+ExecStart=/bin/bash /usr/bin/infinity.sh
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+
+
+[Install]
+WantedBy=multi-user.target
+
 
 6. Посмотреть логи своего сервиса.
-
+vagrant@ubuntu-xenial:~$ sudo journalctl -eu infinity.service
+Jul 21 12:50:24 ubuntu-xenial systemd[1]: Starting Start infinity proces...
