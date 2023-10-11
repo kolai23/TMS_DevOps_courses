@@ -1,0 +1,8 @@
+[webserver]
+localhost
+
+[dbserver]
+localhost
+
+[phpserver]
+localhost

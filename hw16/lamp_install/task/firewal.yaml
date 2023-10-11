@@ -1,0 +1,12 @@
+  # UFW Configuration
+- hosts: webserver
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:  
+    - name: "UFW - Allow HTTP on port {{ http_port }}"
+      ufw:
+        rule: allow
+        port: "{{ http_port }}"
+        proto: tcp

@@ -1,0 +1,26 @@
+  # PHP Info Page
+- hosts: phpserver
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:      
+    - name: Install PHP Packages
+      apt: name={{ item }} update_cache=yes state=latest
+      loop: [ 'python3-pymysql', 'php', 'php-mysql', 'libapache2-mod-php' ]
+
+    - name: Sets Up PHP Info Page
+      template:
+        src: "files/info.php.j2"
+        dest: "/var/www/{{ http_host }}/info.php"
+
+      handlers:
+        - name: Reload Apache
+          service:
+            name: apache2
+            state: reloaded
+
+        - name: Restart Apache
+          service:
+            name: apache2
+            state: restarted

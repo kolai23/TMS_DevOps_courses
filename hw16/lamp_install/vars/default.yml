@@ -1,0 +1,6 @@
+mysql_root_password: "vagrant1234"
+app_user: "vagrant"
+http_host: "vabischevich.io"
+http_conf: "apache.conf"
+http_port: "80"
+disable_default: true

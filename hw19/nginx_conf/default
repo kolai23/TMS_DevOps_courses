@@ -1,0 +1,21 @@
+server {
+	listen 80 default_server;
+
+	listen 443 ssl default_server;
+	
+	ssl_certificate     /etc/ssl/vabischevich.io.crt;
+    ssl_certificate_key /etc/ssl/vabischevich.io.key;
+
+    root /etc/nginx/cert/;
+
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name vabischevich.io;
+
+    location / {
+				try_files $uri $uri/ =404;
+                autoindex on;
+                autoindex_localtime on;
+                autoindex_format html;
+        }
+}
