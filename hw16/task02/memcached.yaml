@@ -1,0 +1,22 @@
+- hosts: webserver2
+  become: true
+
+  tasks:
+    - name: Install prerequisites
+      apt: name={{ item }} update_cache=yes state=latest force_apt_get=yes
+      loop: [ 'memcached', 'libmemcached-tools', 'php-memcached' ]
+    
+    - name: Restart Apache
+      service:
+        name: memcached
+        state: restarted
+
+    - name: Enable service httpd, and not touch the state
+      service:
+        name: memcached
+        enabled: yes
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: reloaded

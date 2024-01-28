@@ -1,0 +1,18 @@
+services:
+  webapp:
+    image: node:18-alpine
+    build: .
+    ports:
+      - "8000:5000"
+    working_dir: /src
+    volumes:
+      - .:/src
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"

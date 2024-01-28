@@ -1,0 +1,6 @@
+mysql_root_password: "vagrant1234"
+app_user: "vagrant"
+http_host: "test.io"
+http_conf: "test.io.сonf"
+http_port: "80"
+disable_default: true

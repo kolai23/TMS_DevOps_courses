@@ -1,0 +1,65 @@
+pipeline {
+    agent { label 'instanse-2'}
+    stages {
+        stage('Clone') {
+            steps {
+                dir('spring-petclinic'){
+                    sh 'rm -R *'
+                    git branch: 'main', credentialsId: 'git_auth_token', url: 'https://github.com/tms-dos17-onl/spring-petclinic.git'
+                }
+            }
+        }
+    }
+        
+    stage('Build') {
+        steps {
+            dir('spring-petclinic') {
+                sh './mvnw package'
+                sh './mvnw test'
+                stash(name: 'petclinic', includes: 'target/*.jar')
+            }
+        }
+    }
+        
+    stage('Parallel') {
+        parallel {
+            stage('Integration Tests') {
+                agent {
+                    docker {
+                        image 'maven:3.9.3-eclipse-temurin-17'
+                        label 'digital-ocean'
+                        args '-p 8180:8080'
+                    }
+                }
+                steps {
+                    unstash 'petclinic'
+                    sh '''
+                        java -jar target/*.jar &
+                        sleep 50
+                    '''
+                    echo 'Hello, Maven'
+                }
+            }
+        
+            stage('Curl digital-ocean') {
+                agent { label 'instanse-2'}
+                steps {
+                    script {
+                        final String url = "http://34.67.20.192:8180"
+                        final String response = sh(script: "curl -s --retry-connrefused --retry 10 --retry-delay 10 $url", returnStdout: true).trim()
+                        echo response
+                    }
+                }
+            }
+        }
+    }
+
+    stage('Publish') {
+        steps {
+            dir('spring-petclinic') {
+                archiveArtifacts artifacts: 'target/*.jar'
+                junit 'target/surefire-reports/*.xml'
+            }
+        }
+    }
+}

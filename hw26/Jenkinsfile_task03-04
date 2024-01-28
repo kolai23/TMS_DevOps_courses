@@ -1,0 +1,37 @@
+pipeline {
+    agent { label 'instanse-2'}
+
+    triggers {
+        cron "0 * * * *"
+    }
+
+    stages {
+        stage('Clone') {
+            steps {
+                dir('spring-petclinic'){
+                    sh 'rm -R *'
+                    git branch: 'main', credentialsId: 'git_auth_token', url: 'https://github.com/tms-dos17-onl/spring-petclinic.git'
+                }
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                dir('spring-petclinic') {
+                    sh './mvnw package'
+                    sh './mvnw test'
+                }
+                
+            }
+        }
+        
+        stage('Publish') {
+            steps {
+                dir('spring-petclinic') {
+                    archiveArtifacts artifacts: 'target/*.jar'
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+    }
+}
